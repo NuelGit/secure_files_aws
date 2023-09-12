@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+Store files on the cloud using hybrid cryptography without RSA, integrate with an Amazon S3 bucket, and use Firebase Authentication, follow these high-level steps:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Set Up Firebase Authentication:
+Create a Firebase project and set up Firebase Authentication.
+Enable email and password authentication, or any other authentication method suitable for your application.
 
-## Available Scripts
+2. Set Up Amazon S3:
+Create an Amazon S3 bucket in your AWS account to store the encrypted files.
+Configure the necessary permissions to control access to the S3 bucket. You may need to create IAM roles and policies.
 
-In the project directory, you can run:
+3. Implement Hybrid Cryptography:
+Choose a symmetric encryption algorithm like AES for file encryption.
+Generate a random Data Encryption Key (DEK) for each file.
+Encrypt the file using AES with the DEK.
+Choose a key management system or use Firebase Realtime Database or Firestore to store and manage DEKs securely.
 
-### `npm start`
+4. File Upload:
+Create a file upload component in your React application.
+When a user uploads a file, generate a DEK for that file.
+Encrypt the file with AES using the DEK.
+Store the encrypted file in the Amazon S3 bucket.
+Store the DEK securely in Firebase or your chosen key management system.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5. File Download:
+Create a file download component in your React application.
+Retrieve the encrypted file from the S3 bucket.
+Retrieve the DEK from Firebase or your key management system.
+Decrypt the file using AES with the DEK.
+Provide the decrypted file for download.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+6. Access Control:
+Implement access control logic in your application. You can use Firebase Authentication to manage user access.
+Define who can upload, download, or delete files.
+Ensure that only authorized users have access to the DEKs.
 
-### `npm test`
+7. User Authentication:
+Use Firebase Authentication to authenticate users.
+Ensure that users have appropriate permissions to upload, download, and manage files.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+8. Secure Your Application:
+Implement secure coding practices to protect against common vulnerabilities like Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF).
+Regularly update and patch dependencies.
+Implement security rules and policies in Firebase and AWS to further enhance security.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
