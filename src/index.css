@@ -1,11 +1,8 @@
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
-  align-items: center;
-  text-align: center;
-}/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* index.css */
 /* Reset some default browser styles */
 body,
 h1,
@@ -54,7 +51,7 @@ a:hover {
   color: #0056b3;
 }
 
-/* Apply a common style to buttons */
+/* Apply a common style to buttons
 button {
   padding: 10px 20px;
   background-color: #304b52;
@@ -64,7 +61,7 @@ button {
   position:relative;
   cursor: pointer;
   transition: background-color 0.3s;
-}
+} */
 
 button:hover {
   background-color: #3a3f43;
