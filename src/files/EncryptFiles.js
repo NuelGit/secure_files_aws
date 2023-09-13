@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import CryptoJS from 'crypto-js'
+import {Storage} from 'aws-amplify'
 
 const EncryptFiles = () => {
 
@@ -11,7 +12,7 @@ const EncryptFiles = () => {
       setFile(e.target.files[0]);
     };
   
-    const handleEncryptFile = () => {
+    const handleEncryptFile = async() => {
       if (!file || !dek) {
         alert('Please select a file and provide a DEK.');
         return;
@@ -19,7 +20,7 @@ const EncryptFiles = () => {
   
       // Read the file as an ArrayBuffer
       const reader = new FileReader();
-      reader.onload = (event) => {
+      reader.onload = async (event) => {
         const fileData = event.target.result;
   
         // Encrypt the file data using AES with the DEK
@@ -31,9 +32,13 @@ const EncryptFiles = () => {
             padding: CryptoJS.pad.Pkcs7,
           }
         ).toString();
-  
+          
         // Handle the encrypted file data (e.g., upload it to a cloud storage)
-  
+        const fileName = file.name;
+        await Storage.put(fileName, encryptedFileData);
+
+        alert('File encrypted and uploaded successfully.')
+
         alert('File encrypted successfully.');
       };
   
