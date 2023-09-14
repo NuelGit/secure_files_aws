@@ -11,6 +11,7 @@ import FileUploads from './files/FileUploads'
 import RetrieveFile from './files/RetrieveFile';
 import FileDownload from './files/FileDownload';
 import EncryptFiles from './files/EncryptFiles';
+import ViewFiles from './files/ViewFiles.js';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
         <Route path='/create-user' element={<CreateAccount/>} />
         <Route path='/profile' element={<Profile/>} />
         <Route path='/uploads' element={<FileUploads/>} />
+        <Route path='/view-files' element={<ViewFiles/>} />
         
       </Routes>
       <RetrieveFile />
